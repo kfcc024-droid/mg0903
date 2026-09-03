@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         body {
@@ -45,30 +47,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-cyan-500 selection:text-white">
 
-    <!-- PALETTE: Brilliant pinks & Energetic Cyan (#0B192C, #1E3E62, #008DDA, #41C9E2, #F8FAFC, #FFFFFF) -->
-
-    <!-- NARRATIVE PLAN:
-    1. Hero Header & Core KPIs: Present the macro vision and headline loan terms (50M KRW limit, 2.0%p discount, 5-yr tenure, 0 prepayment fee).
-    2. Section 1 - Strategic Background: Contextualize local economic downturn, high DSR barriers, and MG's identity transformation into an ESG leader.
-    3. Section 2 - Target Segments: Compare Track A (Traditional Market Merchants) vs Track B (Local Currency Merchants) with visual composition breakdown.
-    4. Section 3 - Rate Discount Structure: Interactive calculator and stacked breakdown of the 2.0%p rate cut mechanics.
-    5. Section 4 - 3-Tier Risk Defense System: Visual flow diagram showing Policy Guarantee, EWS Cash Flow Monitoring, and Portfolio Cap safeguards.
-    6. Section 5 - Digital MG The Banking Ecosystem: Non-face-to-face scraping workflow and value-added SOHO support features.
-    7. Section 6 - Expected ROI & Implementation Roadmap: KPI radar comparison and phased execution timeline leading to 2027 Q1 nationwide launch.
-    -->
-
-    <!-- VISUALIZATION CHOICES:
-    1. Executive KPI Cards -> Goal: Inform -> Single Big Stat Badges -> Structured HTML/CSS Cards
-    2. Regional Financial Stress & Support Needs -> Goal: Compare -> Grouped Bar Chart -> Chart.js (Canvas)
-    3. Target Segment Distribution -> Goal: Compare/Composition -> Donut Chart -> Chart.js (Canvas)
-    4. Interest Rate Discount Stacking -> Goal: Compare -> Horizontal Bar Chart -> Chart.js (Canvas)
-    5. Interactive Discount Calculator -> Goal: Organize/Inform -> Dynamic JS Form -> HTML/CSS + JS Logic
-    6. 3-Tier Risk Management System -> Goal: Organize/Process -> Flow Grid Diagram -> Structured HTML/CSS Cards with Status Badges
-    7. Expected Strategic Impact (Pre vs Post) -> Goal: Change/Compare -> Radar Chart -> Chart.js (Canvas)
-    8. Launch Timeline -> Goal: Organize/Time -> Horizontal Step Roadmap -> Structured HTML/CSS
-    Confirming NO SVG and NO Mermaid JS were used anywhere in this document.
-    -->
-
     <!-- Top Navigation Header -->
     <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -76,13 +54,28 @@
                 <span class="bg-cyan-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded tracking-wider uppercase">MG 새마을금고</span>
                 <h1 class="text-base sm:text-lg font-bold tracking-tight text-white">MG 상생 희망드림 대출 <span class="text-cyan-400 font-normal text-sm hidden sm:inline">| 기획 보고서</span></h1>
             </div>
-            <nav class="hidden md:flex items-center space-x-6 text-xs font-medium text-slate-300">
-                <a href="#background" class="hover:text-cyan-400 transition-colors">추진 배경</a>
-                <a href="#targets" class="hover:text-cyan-400 transition-colors">지원 대상</a>
-                <a href="#rates" class="hover:text-cyan-400 transition-colors">금리 및 우대</a>
-                <a href="#risk" class="hover:text-cyan-400 transition-colors">리스크 관리</a>
-                <a href="#roadmap" class="hover:text-cyan-400 transition-colors">기대효과 & 로드맵</a>
-            </nav>
+
+            <div class="flex items-center gap-3 sm:gap-6">
+                <!-- 내부 섹션 스크롤 내비게이션 (데스크톱) -->
+                <nav class="hidden lg:flex items-center space-x-5 text-xs font-medium text-slate-300">
+                    <a href="#background" class="hover:text-cyan-400 transition-colors">추진 배경</a>
+                    <a href="#targets" class="hover:text-cyan-400 transition-colors">지원 대상</a>
+                    <a href="#rates" class="hover:text-cyan-400 transition-colors">금리 및 우대</a>
+                    <a href="#risk" class="hover:text-cyan-400 transition-colors">리스크 관리</a>
+                    <a href="#roadmap" class="hover:text-cyan-400 transition-colors">기대효과 & 로드맵</a>
+                </nav>
+
+                <!-- 대출상환 계산기 연결 버튼 (https://kfcc024-droid.github.io/mg0903/cal 연결) -->
+                <a 
+                    href="https://kfcc024-droid.github.io/mg0903/cal" 
+                    class="inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-600 via-cyan-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-lg shadow-cyan-950/60 border border-cyan-300/40 transition-all transform active:scale-95"
+                    title="MG 맞춤형 대출 상환 계산기로 이동"
+                >
+                    <i class="fa-solid fa-calculator text-amber-300 animate-pulse"></i>
+                    <span>대출상환 계산기</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80 ml-0.5"></i>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -102,6 +95,13 @@
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                     고금리·고물가 국면 속 골목상권 및 전통시장 영세 소상공인의 금융비용 부담을 파격적으로 완화하고, 지역 자금의 선순환 생태계를 구축하기 위한 맞춤형 상생 여신 솔루션입니다.
                 </p>
+                <div class="pt-2 flex flex-wrap gap-2.5">
+                    <a href="https://kfcc024-droid.github.io/mg0903/cal" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-slate-900 text-xs font-bold hover:bg-cyan-50 transition shadow">
+                        <i class="fa-solid fa-coins text-cyan-600"></i>
+                        <span>희망드림 대출 상환액 계산해보기</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- KPI Callout Grid -->
@@ -129,16 +129,15 @@
             </div>
         </section>
 
-        <!-- Section 1: Background & Strategic Necessity (EMPHASIZED & AI POWERED) -->
+        <!-- Section 1: Background & Strategic Necessity -->
         <section id="background" class="section-highlight rounded-2xl p-6 sm:p-9 space-y-7 border-2 border-pink-400/40 relative overflow-hidden transition-all duration-300">
-            <!-- Ambient Accent Glow -->
             <div class="absolute -right-16 -top-16 w-56 h-56 bg-cyan-200/30 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-4">
                 <div class="border-l-4 border-pink-600 pl-4">
                     <div class="flex items-center gap-2">
-                        <span class="text-xs font-extrabold text-pimk-600 uppercase tracking-wider">SECTION 01</span>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-pimk-100 text-pink-800">핵심 전략 안건</span>
+                        <span class="text-xs font-extrabold text-pink-600 uppercase tracking-wider">SECTION 01</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-pink-100 text-pink-800">핵심 전략 안건</span>
                     </div>
                     <h4 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">상품 기획 배경 및 필요성</h4>
                 </div>
@@ -199,11 +198,11 @@
                 </div>
             </div>
 
-            <!-- GEMINI API FEATURE 1: 실시간 지역경제 & 정책금융 AI 인텔리전스 (Google Search Grounding) -->
+            <!-- GEMINI API FEATURE 1: 실시간 지역경제 & 정책금융 AI 인텔리전스 -->
             <div class="mt-4 bg-gradient-to-r from-slate-900 via-pink-950 to-slate-900 text-white rounded-xl p-5 sm:p-6 shadow-lg border border-cyan-500/40 space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
                     <div class="flex items-center gap-2">
-                        <span class="bg-gradient-to-r from-cyan-400 to-pink-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Gemini 3 Flash</span>
+                        <span class="bg-gradient-to-r from-cyan-400 to-pink-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Gemini 2.5 Flash</span>
                         <h5 class="font-bold text-sm text-cyan-300 flex items-center gap-1.5">
                             AI 실시간 소상공인 정책금융 동향 브리핑
                         </h5>
@@ -230,7 +229,6 @@
                         <span id="briefingTimestamp" class="text-[10px]"></span>
                     </div>
                     <div id="briefingContent" class="text-slate-200 leading-relaxed space-y-2 whitespace-pre-line"></div>
-                    <!-- Sources Area -->
                     <div id="briefingSources" class="pt-2 border-t border-slate-800 text-[10px] text-slate-400 space-y-1"></div>
                 </div>
             </div>
@@ -385,7 +383,7 @@
                         <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">AI 컨설팅</span>
                         <h5 class="font-bold text-sm text-slate-900">AI 맞춤 차주 적격성 및 상환 부담 시뮬레이터</h5>
                     </div>
-                    <span class="text-xs text-slate-500">Gemini 3 Flash 대출 플랜 진단</span>
+                    <span class="text-xs text-slate-500">Gemini 2.5 Flash 대출 플랜 진단</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
@@ -605,7 +603,6 @@
 
     <!-- JavaScript Charts & Logic -->
     <script>
-        // Standard Label Wrapping Logic (16 char limit rule)
         function wrapLabel(str, maxLen = 16) {
             if (typeof str !== 'string' || str.length <= maxLen) return str;
             const words = str.split(' ');
@@ -623,7 +620,6 @@
             return lines;
         }
 
-        // Common Tooltip Title Callback Configuration Requirement
         const commonTooltipConfig = {
             callbacks: {
                 title: function(tooltipItems) {
@@ -789,8 +785,8 @@
             document.getElementById('calcFinalRate').innerText = `연 ${finalRate.toFixed(2)}%`;
         }
 
-        // Utility for Exponential Backoff Fetch
-        async function fetchWithRetry(url, options, maxRetries = 3) {
+        // 지수 백오프 fetch 함수 (1s, 2s, 4s, 8s, 16s - 최대 5회 재시도)
+        async function fetchWithRetry(url, options, maxRetries = 5) {
             let delay = 1000;
             for (let attempt = 0; attempt < maxRetries; attempt++) {
                 try {
@@ -811,7 +807,7 @@
             throw new Error('요청 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
         }
 
-        // 1. Live Market Briefing via Gemini with Google Search Grounding
+        // 1. Live Market Briefing via Gemini 2.5 Flash with Google Search Grounding
         async function generateMarketBriefing() {
             const queryInput = document.getElementById('geminiSearchQuery').value.trim();
             if (!queryInput) return;
@@ -830,10 +826,9 @@
             sourcesEl.innerHTML = '';
 
             const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
             const systemPrompt = "당신은 새마을금고중앙회 금융상품개발팀의 수석 애널리스트입니다. 웹 검색 결과를 종합하여 소상공인 부채 및 금융비용 현황, 정책금융 방향성, 그리고 'MG 상생 희망드림 대출' 상품의 도입 당위성을 3개의 명확한 핵심 단락으로 전문적이고 설득력 있게 정리해 주세요. 한국어로 작성하세요.";
-
             const userPrompt = `소상공인 금융 상황 분석 요청: ${queryInput}. 최신 동향을 반영하여 정책금융 및 상호금융의 역할 관점에서 브리핑을 작성하세요.`;
 
             const payload = {
@@ -859,7 +854,6 @@
                     contentEl.textContent = text;
                     timestampEl.textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-                    // Parse grounding sources if available
                     let sources = [];
                     const groundingMeta = candidate.groundingMetadata;
                     if (groundingMeta && groundingMeta.groundingAttributions) {
@@ -887,7 +881,7 @@
             }
         }
 
-        // 2. Loan Consultation & Repayment Advisor via Gemini
+        // 2. Loan Consultation & Repayment Advisor via Gemini 2.5 Flash
         async function generateLoanConsulting() {
             const bizType = document.getElementById('aiBizType').value;
             const loanAmount = document.getElementById('aiLoanAmount').value;
@@ -904,10 +898,9 @@
             contentEl.innerHTML = '<span class="text-pink-600 font-medium">소상공인 맞춤 상환 플랜 및 우대금리 심사 조건을 분석 중입니다...</span>';
 
             const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
             const systemPrompt = "당신은 새마을금고의 친절하고 전문적인 금융 컨설턴트입니다. 차주의 사업 형태와 희망 대출액에 맞춰 'MG 상생 희망드림 대출'을 활용했을 때의 금리 우대 팁(최대 2.0%p 절감 방안), 1년 거치 4년 상환 시 현금흐름 관리 조언, 리스크 예방 팁을 간결하고 명확하게 bullet point 형식으로 제안해 주세요.";
-
             const userPrompt = `사업장 유형: ${bizType}\n희망 대출금액: ${loanAmount}\n월 평균 순수익: ${monthlyRevenue}\n이 고객이 본 MG 상생 대출을 신청할 때 가장 적합한 트랙(트랙 A 또는 트랙 B)과 금리를 최대로 낮출 수 있는 실천 팁, 안정적인 원리금 상환 전략을 작성해 주세요.`;
 
             const payload = {
